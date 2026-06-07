@@ -72,6 +72,12 @@ export default function CreateAirdropForm() {
       if (parsed.length === 0) { setParseErr('No valid entries found'); return; }
       const invalid = parsed.filter(e => !ADDR_RE.test(e.address));
       if (invalid.length > 0) { setParseErr(`Invalid address on line ${invalid[0].index + 1}: ${invalid[0].address}`); return; }
+      const seen = new Set<string>();
+      for (const e of parsed) {
+        const lower = e.address.toLowerCase();
+        if (seen.has(lower)) { setParseErr(`Duplicate address: ${e.address}`); return; }
+        seen.add(lower);
+      }
       setParseErr('');
       setEntries(parsed);
     } catch (e: unknown) {
