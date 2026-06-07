@@ -78,6 +78,8 @@ export default function CreateAirdropForm() {
         if (seen.has(lower)) { setParseErr(`Duplicate address: ${e.address}`); return; }
         seen.add(lower);
       }
+      const zeroAmt = parsed.find(e => e.amount === 0n);
+      if (zeroAmt) { setParseErr(`Zero amount on line ${zeroAmt.index + 1} — remove or set an amount`); return; }
       setParseErr('');
       setEntries(parsed);
     } catch (e: unknown) {
