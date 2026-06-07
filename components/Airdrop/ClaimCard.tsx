@@ -35,7 +35,7 @@ export default function ClaimCard({ address }: Props) {
     ? entries.find(e => e.address.toLowerCase() === userAddr.toLowerCase())
     : null;
 
-  const tree = entries ? buildMerkleTree(entries) : null;
+  const tree = entries && entries.length > 0 ? buildMerkleTree(entries) : null;
 
   const { data: claimed } = useReadContract({
     address, abi: MERKLEDISTR_ABI, functionName: 'isClaimed',
