@@ -20,7 +20,7 @@ export default function DeployTokenForm() {
     if (!name.trim())   e.name   = 'Required';
     if (!symbol.trim()) e.symbol = 'Required';
     const n = parseFloat(supply);
-    if (isNaN(n) || n <= 0) e.supply = 'Must be positive';
+    if (isNaN(n) || Math.floor(n) <= 0) e.supply = 'Must be a positive whole number';
     setErrs(e);
     return Object.keys(e).length === 0;
   }
