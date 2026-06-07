@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #050510;
+  --surface: #0a0a1e;
+  --border: #16163a;
+  --accent: #8b5cf6;
+  --accent2: #a78bfa;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --danger: #f87171;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; min-height: 100vh; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+input, textarea {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: 8px;
+  padding: 10px 14px;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+input:focus, textarea:focus { border-color: var(--accent) !important; }
+input::placeholder, textarea::placeholder { color: var(--muted); }
+textarea { resize: vertical; }
+
+button { cursor: pointer; border: none; border-radius: 8px; font-weight: 600; transition: all 0.18s; }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
