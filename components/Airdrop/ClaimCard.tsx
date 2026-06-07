@@ -28,7 +28,7 @@ export default function ClaimCard({ address }: Props) {
   // Auto-load from localStorage
   useEffect(() => {
     const rec = loadAirdrop(address);
-    if (rec) setEntries(rec.entries);
+    if (rec?.entries?.length) setEntries(rec.entries);
   }, [address]);
 
   const myEntry = entries && userAddr
